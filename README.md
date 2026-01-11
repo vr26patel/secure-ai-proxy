@@ -36,7 +36,3 @@ As AI adoption grows, so do the risks. This project demonstrates a "Security-Fir
 ## 🚀 Usage
 *This project is for educational security research purposes.*
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/YOUR_USERNAME/secure-ai-proxy.git](https://github.com/YOUR_USERNAME/secure-ai-proxy.git)
-cd secure-ai-proxy
