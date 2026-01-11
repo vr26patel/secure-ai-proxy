@@ -36,20 +36,3 @@ Output Analysis → Scans response for PII patterns.
 Redaction → Masks sensitive data.
 
 Final Output → Safe response delivered to user.
-
-🚀 Usage
-This project is for educational security research purposes.
-
-Bash
-
-# 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/secure-ai-proxy.git
-
-# 2. Install dependencies
-pip install groq
-
-# 3. Set API Key (Linux/Mac)
-export GROQ_API_KEY="your_api_key_here"
-
-# 4. Run the Secure Bot
-python3 secure_bot.py
