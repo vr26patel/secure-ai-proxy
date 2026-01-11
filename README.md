@@ -1,38 +1,42 @@
-📖 Overview
-As AI adoption grows, so do the risks. This project demonstrates a "Security-First" architecture for LLM applications. Instead of connecting users directly to an AI model, this application acts as a secure proxy, enforcing Input Validation, Data Loss Prevention (DLP), and Traffic Throttling before requests are processed.
+# 🛡️ Secure AI Proxy: LLM Firewall & Defense System
 
-Tech Stack: Python, Groq API (Llama 3), Regex, Logging modules.
+> **A Python-based security wrapper for Large Language Models (LLMs) that mitigates OWASP Top 10 vulnerabilities.**
 
-🔐 Key Security Features (The CIA Triad)
-1. 🛡️ Input Sanitization (The Bouncer)
-Defense Against: Prompt Injection, Jailbreaking.
+## 📖 Overview
+As AI adoption grows, so do the risks. This project demonstrates a "Security-First" architecture for LLM applications. Instead of connecting users directly to an AI model, this application acts as a secure proxy, enforcing **Input Validation**, **Data Loss Prevention (DLP)**, and **Traffic Throttling** before requests are processed.
 
-Mechanism: Scans user input against a strict blocklist of known attack vectors (e.g., "Ignore instructions", "System prompt") before the API call is made.
+**Tech Stack:** Python, Groq API (Llama 3), Regex, Logging modules.
 
-2. 🕵️ Output Filtering (The Censor)
-Defense Against: Sensitive Data Exposure (PII Leakage).
+## 🔐 Key Security Features (The CIA Triad)
 
-Mechanism: Uses Regex pattern matching to detect and redact sensitive information (like Credit Card numbers) from the AI's response before it reaches the user.
+### 1. 🛡️ Input Sanitization (The Bouncer)
+* **Defense Against:** Prompt Injection, Jailbreaking.
+* **Mechanism:** Scans user input against a strict blocklist of known attack vectors (e.g., "Ignore instructions", "System prompt") before the API call is made.
 
-3. ⏱️ Rate Limiting (The Turnstile)
-Defense Against: Denial of Service (DoS), Resource Exhaustion.
+### 2. 🕵️ Output Filtering (The Censor)
+* **Defense Against:** Sensitive Data Exposure (PII Leakage).
+* **Mechanism:** Uses Regex pattern matching to detect and redact sensitive information (like Credit Card numbers) from the AI's response before it reaches the user.
 
-Mechanism: Implements a token-bucket style throttle that forces a cool-down period between requests to prevent API abuse.
+### 3. ⏱️ Rate Limiting (The Turnstile)
+* **Defense Against:** Denial of Service (DoS), Resource Exhaustion.
+* **Mechanism:** Implements a token-bucket style throttle that forces a cool-down period between requests to prevent API abuse.
 
-4. 📝 Forensic Logging (The Black Box)
-Defense Against: Non-Repudiation.
+### 4. 📝 Forensic Logging (The Black Box)
+* **Defense Against:** Non-Repudiation.
+* **Mechanism:** Automatically records all security violations (blocked attacks, PII leaks) to a timestamped `security_events.log` file for incident response.
 
-Mechanism: automatically records all security violations (blocked attacks, PII leaks) to a timestamped security_events.log file for incident response.
+## ⚙️ How It Works
+1.  **User Input** → **Rate Limiter Check** (Pass/Fail)
+2.  **Input Sanitization** → Scans for malicious keywords.
+3.  **API Call** → Securely transmits sanitized prompt to Groq (Llama 3).
+4.  **Output Analysis** → Scans response for PII patterns.
+5.  **Redaction** → Masks sensitive data.
+6.  **Final Output** → Safe response delivered to user.
 
-⚙️ How It Works
-User Input → Rate Limiter Check (Pass/Fail)
+## 🚀 Usage
+*This project is for educational security research purposes.*
 
-Input Sanitization → Scans for malicious keywords.
-
-API Call → Securely transmits sanitized prompt to Groq (Llama 3).
-
-Output Analysis → Scans response for PII patterns.
-
-Redaction → Masks sensitive data.
-
-Final Output → Safe response delivered to user.
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/YOUR_USERNAME/secure-ai-proxy.git](https://github.com/YOUR_USERNAME/secure-ai-proxy.git)
+cd secure-ai-proxy
